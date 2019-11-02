@@ -38,15 +38,25 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'maps',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../maps/maps.module').then(m => m.Tab3PageModule)
+          }
+        ]
+      },
+      {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/app/tabs/tab1',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/app/tabs/tab1',
     pathMatch: 'full'
   }
 ];
