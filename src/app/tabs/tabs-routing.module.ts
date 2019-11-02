@@ -43,7 +43,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../maps/maps.module').then(m => m.Tab3PageModule)
+              import('../maps/maps.module').then(m => m.MapsPageModule)
           }
         ]
       },
