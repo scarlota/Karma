@@ -58,6 +58,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'create',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../createGig/create_gig.module').then(m => m.CreateGigPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/app/tabs/list',
         pathMatch: 'full'

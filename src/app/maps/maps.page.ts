@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef } from "@angular/core";
+import { GigService } from 'src/app/services/gig.service';
 
 declare var google;
 
@@ -13,19 +14,13 @@ export class MapsPage {
     map: any;
     address: string;
 
-    locs: Array<GigLocation> = [
-        new GigLocation(47.411305, 8.612046),
-        new GigLocation(47.410205, 8.611046),
-        new GigLocation(47.412105, 8.614046),
-        new GigLocation(47.413005, 8.613046),
-    ]
-
-    constructor() {
+    constructor(private gigService : GigService) {
 
     }
 
 
-    ngAfterViewInit() {
+
+    ionViewDidEnter() {
         this.loadMap();
     }
 
@@ -46,20 +41,30 @@ export class MapsPage {
 
         });
 
+        let gigs =  this.gigService.GetGigs();
 
-        for (var index in this.locs) {
-            var marker = new google.maps.Marker({
+        let infoWindows : Array<any> = [];
+
+        for (var index in gigs) {
+            let marker = new google.maps.Marker({
                 map: this.map,
                 animation: google.maps.Animation.NONE,
-                position: new google.maps.LatLng(this.locs[index].lat, this.locs[index].len)
+                position: new google.maps.LatLng(gigs[index].location.lat, gigs[index].location.len)
+            });
+
+            let obj = gigs[index];
+            let infowindow = new google.maps.InfoWindow({
+                content: obj.title +' / '+ obj.date
+              });
+
+              infoWindows.push(infowindow);
+            google.maps.event.addListener(marker, 'click', function() {
+                infoWindows.forEach(element => {
+                    element.close();
+                });
+                infowindow.open(this.map, marker);     
             });
 
         }
-    }
-}
-
-class GigLocation {
-    constructor(public lat: any, public len: any) {
-
     }
 }
