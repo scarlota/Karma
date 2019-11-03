@@ -8,47 +8,88 @@
 
 
 
-<ion-content>  
+<ion-content>
   <!-- My posted gigs -->
-<ion-tabs>
+  <ion-tabs style="display: contents;">
     <ion-tab-bar slot="top">
-      <ion-tab-button tab="postedGigs" (click) = showPosted()>
+      <ion-tab-button tab="postedGigs" (click)="showPosted()">
         <ion-label>Posted</ion-label>
-        <ion-badge>1</ion-badge>
+        <ion-badge>{{numberCreated}}</ion-badge>
       </ion-tab-button>
-      
-      <ion-tab-button tab="pendingGigs" (click) = showPending()>
+
+      <ion-tab-button tab="pendingGigs" (click)="showPending()">
         <ion-label>Pending</ion-label>
-        <ion-badge>1</ion-badge>
+        <ion-badge>{{numberPending}}</ion-badge>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
 
-    <ion-list *ngIf="showPostedList">
-      <ion-list-header>
-        <ion-label>Posted</ion-label>
-      </ion-list-header>
-      <ion-item>Posted Item 1</ion-item>
-      <ion-item>Posted Item 2</ion-item>
-      <ion-item>Posted Item 3</ion-item>
-      <ion-item>Posted Item 4</ion-item>
-      <ion-item>Posted Item 5</ion-item>
+  <div *ngIf="showPostedList">
+
+
+    <ion-list *ngFor="let gig of ownGigs">
+      <ion-item class="item item-text-wrap">
+        <ion-label text-wrap>
+          <ion-card-title>{{gig.title}}</ion-card-title>
+          <ion-card-subtitle>{{gig.owner}}</ion-card-subtitle>
+        </ion-label>
+        <!-- <ion-icon name="heart" color="medium"></ion-icon> -->
+
+
+        <!-- <ion-card-content>
+                {{service.description}}
+            </ion-card-content> -->
+
+        <ion-row>
+          <ion-col>
+            {{ gig.date | date : "hh:mm MMMM d, y" }}
+          </ion-col>
+          <ion-col align-self-center text-center>
+            <ion-icon name="hourglass"></ion-icon>
+            <ion-note>
+              {{gig.duration}} min
+            </ion-note>
+          </ion-col>
+        </ion-row>
+
+      </ion-item>
     </ion-list>
+  </div>
+  <div *ngIf="showPendingList">
 
 
-  <ion-list *ngIf="showPendingList">
-      <ion-list-header>
-        <ion-label>Pending</ion-label>
-      </ion-list-header>
-      <ion-item>Pending Item 1</ion-item>
+    <ion-list *ngFor="let gig of pendingGigs">
+      <ion-item>
+        <ion-label text-wrap>
+          <ion-card-title>{{gig.title}}</ion-card-title>
+          <ion-card-subtitle>{{gig.owner}}</ion-card-subtitle>
+        </ion-label>
+        <!-- <ion-icon name="heart" color="medium"></ion-icon> -->
+
+
+        <!-- <ion-card-content>
+            {{service.description}}
+        </ion-card-content> -->
+
+        <ion-row>
+          <ion-col>
+            {{ gig.date | date : "hh:mm MMMM d, y" }}
+          </ion-col>
+          <ion-col align-self-center text-center>
+            <ion-icon name="hourglass"></ion-icon>
+            <ion-note>
+              {{gig.duration}} min
+            </ion-note>
+          </ion-col>
+        </ion-row>
+      </ion-item>
     </ion-list>
+  </div>
+  <!-- fab placed to the bottom end -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink='/app/tabs/create'>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
-    <!-- fab placed to the bottom end -->
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button routerLink='/app/tabs/create'>
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-
-  </ion-content>
-  
+</ion-content>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GigService, KarmaGig } from 'src/app/services/gig.service';
+import { ArrayType } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-gigs',
@@ -11,17 +12,24 @@ export class GigsPage {
   showPendingList: boolean = false;
 
   gigs : Array<KarmaGig> = []
+  ownGigs : Array<KarmaGig> = []
+  pendingGigs : Array<KarmaGig> = []
   numberPending : number = 0;
   numberCreated : number = 0;
 
-  pendingGigs : Array<number> = [17,18]
+  pendingGigsIds : Array<number> = [17,18]
 
   constructor(private gigService : GigService) {
-    this.gigs = gigService.GetGigs();
+    
+  }
 
+  ionViewDidEnter()
+  {
+    this.gigs = this.gigService.GetGigs();  
+    this.ownGigs = this.gigs.filter(x => x.owner == "Anon1");
+    this.pendingGigs = this.gigs.filter(x => this.pendingGigsIds.includes(x.id));
     this.numberPending = this.pendingGigs.length;
-    this.numberCreated = this.gigs.filter(x => x.owner == "Anon1").length;
-
+    this.numberCreated = this.ownGigs.length;
   }
 
   showPosted() {
