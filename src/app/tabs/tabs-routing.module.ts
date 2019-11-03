@@ -59,22 +59,14 @@ const routes: Routes = [
       },
       {
         path: '',
-<<<<<<< HEAD
-        redirectTo: '/tab/list',
-=======
-        redirectTo: '/app/tabs/tab1',
->>>>>>> 1a01198931644dd5ae077e6e8e980b51da1e366b
+        redirectTo: '/app/tabs/list',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-<<<<<<< HEAD
-    redirectTo: '/tabs/list',
-=======
-    redirectTo: '/app/tabs/tab1',
->>>>>>> 1a01198931644dd5ae077e6e8e980b51da1e366b
+    redirectTo: '/app/tabs/list',
     pathMatch: 'full'
   }
 ];
