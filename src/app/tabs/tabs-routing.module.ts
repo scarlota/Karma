@@ -58,12 +58,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'service-detail',
+        path: 'create',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../service-detail/service-detail.module').then(m => m.ServiceDetailModule)
+              import('../createGig/create_gig.module').then(m => m.CreateGigPageModule)
           }
         ]
       },

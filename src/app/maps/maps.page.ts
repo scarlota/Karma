@@ -20,7 +20,7 @@ export class MapsPage {
 
 
 
-    ngAfterViewInit() {
+    ionViewDidEnter() {
         this.loadMap();
     }
 

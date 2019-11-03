@@ -112,6 +112,10 @@ export class GigService {
         return this.gigs;
     }
 
+    AddGig(gig : KarmaGig) {
+        this.gigs.push(gig);
+    }
+
 }
 
 export class KarmaGig {
@@ -131,7 +135,7 @@ export class KarmaGig {
     }
 }
 
-class GigLocation {
+export class GigLocation {
     constructor(public lat: any, public len: any) {
 
     }
