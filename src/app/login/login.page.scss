@@ -1,0 +1,14 @@
+.vertical-align-content > *
+{
+     display: flex!important;
+     align-content: center!important;
+     align-items: center!important;
+}
+
+ion-item {
+    
+}
+
+ion-grid {
+    height:100%
+}

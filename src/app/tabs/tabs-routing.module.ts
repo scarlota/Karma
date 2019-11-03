@@ -28,25 +28,53 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab3',
+        path: 'gigs',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../gigs/gigs.module').then(m => m.GigsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'profile',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../profile/profile.module').then(m => m.ProfilePageModule)
+          }
+        ]
+      },
+      {
+        path: 'maps',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../maps/maps.module').then(m => m.MapsPageModule)
           }
         ]
       },
       {
         path: '',
+<<<<<<< HEAD
         redirectTo: '/tab/list',
+=======
+        redirectTo: '/app/tabs/tab1',
+>>>>>>> 1a01198931644dd5ae077e6e8e980b51da1e366b
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
+<<<<<<< HEAD
     redirectTo: '/tabs/list',
+=======
+    redirectTo: '/app/tabs/tab1',
+>>>>>>> 1a01198931644dd5ae077e6e8e980b51da1e366b
     pathMatch: 'full'
   }
 ];
