@@ -7,3 +7,33 @@
 .left { float:left }
 
 .image-align { margin-right: 10px;}
+
+.icon-margin {
+  margin: 24px;
+  width: 50px !important;  
+  height : 50px !important;
+}
+
+.text-margin {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.icon-timing {
+  width: 40px !important;  
+  height : 40px !important;
+}
+
+.icon-location {
+  width: 30px !important;  
+  height : 30px !important;
+}
+
+.item-avatar {
+  color: #FFF;
+  background-color: #3498DB;  
+  width:100px !important;  
+  height : 100px !important;  
+  max-width: 100px !important;  //any size
+  max-height: 100px !important; //any size 
+}

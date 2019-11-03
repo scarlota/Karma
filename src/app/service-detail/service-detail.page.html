@@ -16,7 +16,98 @@
 
 <ion-content>
 
-    <!-- <h2>{{service.title | uppercase}}</h2>
-    <div><span>Author: </span>{{service.author}}</div> -->
+  <div *ngIf="service">
+    <ion-grid>
+        <ion-row>
+            <ion-col size="4">
+            </ion-col>
+          <ion-col size="4">
+            <div text-align="center">
+              <ion-avatar class="ion-margin-start" class="item-avatar">
+                  <img *ngIf="service.image != ''" src="{{service.image}}">
+                  <div *ngIf="service.image == ''" [ngSwitch]="service.category">
+                      <div *ngSwitchCase="'pet'">
+                        <ion-icon name="paw" color="dark" class="icon-margin"></ion-icon>
+                      </div>
+                      <div *ngSwitchCase="'shop'">
+                        <ion-icon name="cart" color="dark" class="icon-margin"></ion-icon>
+                      </div>
+                      <div *ngSwitchCase="'ride'">
+                        <ion-icon name="car" color="dark" class="icon-margin"></ion-icon>
+                      </div>
+                      <div *ngSwitchCase="'work'">
+                        <ion-icon name="hammer" color="dark" class="icon-margin"></ion-icon>
+                      </div>
+                      <div *ngSwitchCase="'food'">
+                          <ion-icon name="pizza" color="dark" class="icon-margin"></ion-icon>
+                        </div>
+                      <div *ngSwitchDefault>
+                          <ion-icon name="body" color="dark" class="icon-margin"></ion-icon>
+                        </div>
+                    </div> 
+              </ion-avatar>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+          </ion-col>
+        </ion-row>
+        <!-- <ion-row>
+          <ion-col>
+              <div style="text-align:justify">
+                  <ion-title>{{service.title | uppercase}}</ion-title>
+              </div>
+          </ion-col>
+        </ion-row> -->
+      </ion-grid>
 
+    <!-- <div text-align="center">
+      <ion-avatar class="ion-margin-start">
+          <img src="{{service.image}}">
+      </ion-avatar> 
+    </div>-->
+
+
+    <ion-item class="item item-text-wrap" lines="none">
+      <ion-icon slot="start" color="medium" name="alarm" class="icon-timing"></ion-icon>
+      <div>
+        <ion-text color="medium">{{ service.date | date : "hh:mm MMMM d, y" }}</ion-text>
+        <div>
+          <ion-text color="medium">{{service.duration}} min</ion-text>
+        </div>
+      </div>
+    </ion-item>
+
+    <ion-text color="primary" class="text-margin">
+      <h1 class="text-margin">{{service.title | uppercase}}
+        <ion-icon name="heart-empty" color="primary" style="float: right;"></ion-icon>
+      </h1>
+    </ion-text>
+
+    <ion-text color="dark">
+      <p class="text-margin">{{service.description}}</p>
+    </ion-text>
+
+    <ion-item class="item item-text-wrap" lines="none">
+      <ion-icon slot="start" color="medium" name="pin" class="icon-location"></ion-icon>
+      <div>
+        <ion-text *ngIf="service.location.address" color="medium">{{service.location.address}}</ion-text>
+        <ion-text *ngIf="service.location.address == ''" color="medium">
+          <!-- ({{service.location.lat}}, {{service.location.len}}) -->
+          <a  routerLink="/">Show on map</a>
+        </ion-text>
+      </div>
+    </ion-item>
+
+    <ion-item class="item item-text-wrap" lines="none">
+        <ion-icon slot="start" color="medium" name="person" class="icon-location"></ion-icon>
+        <div>
+          <a href="#">{{service.owner}}</a>
+        </div>
+      </ion-item>
+
+    <ion-button style="float: right; margin:10px">
+      Apply
+    </ion-button>
+
+  </div>
 </ion-content>

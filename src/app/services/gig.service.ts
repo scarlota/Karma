@@ -11,7 +11,7 @@ export class GigService {
             "2019-01-05T09:05:05Z",
             'pet',
             "Need some help for the evening!",
-            new GigLocation(47.411305, 8.617046),
+            new GigLocation(47.411305, 8.617046, "Bern, Gemeindestrasse 78, 8032"),
             'Dr Nice',
             5,
             45
@@ -35,7 +35,7 @@ export class GigService {
             "2019-01-05T09:05:05Z",
             'ride',
             "Need some help for the evening!",
-            new GigLocation(47.419305, 8.62046),
+            new GigLocation(47.419305, 8.62046, "Basel, Brinerstrasse 37, 7003"),
             'Celeritas',
             2,
             30
@@ -60,7 +60,7 @@ export class GigService {
             "2019-01-05T09:05:05Z",
             "pet",
             "Please walk my good boy",
-            new GigLocation(47.413305, 8.609046),
+            new GigLocation(47.413305, 8.609046, "Zurich, Glaubtensteig 11, 8046"),
             "Anon1",
             3,
             30),
@@ -81,7 +81,7 @@ export class GigService {
             "2019-01-05T09:05:05Z",
             "people",
             "I need to board the train at 12:15 but can't get up the stairs",
-            new GigLocation(47.416105, 8.610046),
+            new GigLocation(47.416105, 8.610046, "Zurich, Breitenackerstrasse 21, 8055"),
             "Anon3",
             5,
             85),
@@ -102,7 +102,7 @@ export class GigService {
             "2019-01-05T09:05:05Z",
             "nature",
             "Can somebody help me carry my bags?",
-            new GigLocation(47.416005, 8.618046),
+            new GigLocation(47.416005, 8.618046, "Zurich, Abendweg 8038"),
             "Anon5",
             6,
             90),
@@ -110,6 +110,10 @@ export class GigService {
 
     GetGigs(): Array<KarmaGig> {
         return this.gigs;
+    }
+
+    GetGigById(id: number): KarmaGig {
+        return this.gigs.find(x => x.id == id);;
     }
 
 }
@@ -132,7 +136,8 @@ export class KarmaGig {
 }
 
 class GigLocation {
-    constructor(public lat: any, public len: any) {
+
+    constructor(public lat: any, public len: any, public address: string = "") {
 
     }
 }

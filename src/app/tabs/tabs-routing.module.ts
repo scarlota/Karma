@@ -58,7 +58,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'service-detail',
+        path: 'service-detail/:id',
         children: [
           {
             path: '',

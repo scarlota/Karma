@@ -52,9 +52,9 @@ export class ListPage implements OnInit {
 
   onSelect(service: Service): void {
     this.selectedService = service;
-    this.router.navigateByUrl('app/tabs/service-detail');
+    this.router.navigate(['app/tabs/service-detail', this.selectedService.id]);
 
-    console.log("select", service);
+    //console.log("select", service);
   }
 
 }
