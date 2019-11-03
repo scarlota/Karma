@@ -9,31 +9,38 @@
 <ion-content>
 
     <ion-list lines="none">
-    <ion-card *ngFor="let service of services" (click)="onSelect(service)">
+    <ion-card *ngFor="let service of gigs" (click)="onSelect(service)">
       <ion-item class="item item-text-wrap">
         <ion-avatar item-start style="margin-right: 10px;" class="item-avatar">
           <img *ngIf="service.image != ''" src="{{service.image}}">
-          <div *ngIf="service.image == ''" [ngSwitch]="service.category">
-              <div *ngSwitchCase="'pet'">
-                <ion-icon name="paw" color="blue" class="icon-margin"></ion-icon>
+          <div *ngIf="service.image == ''" ng-switch="service.category">
+              <div ng-switch-when="pet">
+                <ion-icon name="paw" color="blue" style="align-self: center;size: 24px;"></ion-icon>
               </div>
-              <div *ngSwitchCase="'shop'">
-                <ion-icon name="cart" color="dark" class="icon-margin"></ion-icon>
+              <!-- <div ng-switch-when="shop">
+                <ion-icon name="cart" color="dark"></ion-icon>
               </div>
-              <div *ngSwitchCase="'ride'">
-                <ion-icon name="car" color="red" class="icon-margin"></ion-icon>
+              <div ng-switch-when="ride">
+                <ion-icon name="car" color="red"></ion-icon>
               </div>
-              <div *ngSwitchCase="'work'">
-                <ion-icon name="hammer" color="dark" class="icon-margin"></ion-icon>
+              <div ng-switch-when="work">
+                <ion-icon name="hammer" color="dark"></ion-icon>
               </div>
-              <div *ngSwitchDefault>
-                  <ion-icon name="body" color="dark" class="icon-margin"></ion-icon>
-                </div>
+              <div ng-switch-default>
+                  <ion-icon name="body" color="dark"></ion-icon>
+                </div>-->
             </div> 
+
+           <span [ngSwitch]="service.category">
+                <p *ngSwitchCase="'pet'">Gluten-free</p>
+                <p *ngSwitchCase="'shop'">Vegetarian / Vegan</p>
+                <p *ngSwitchCase="'ride'">Paleo</p>
+                <p *ngSwitchDefault>Standard diet</p>
+              </span>
         </ion-avatar>
         <ion-label text-wrap>
             <ion-card-title>{{service.title}}</ion-card-title>
-            <ion-card-subtitle>{{service.author}}</ion-card-subtitle>
+            <ion-card-subtitle>{{service.owner}}</ion-card-subtitle>
           </ion-label>
           <!-- <ion-icon name="heart" color="medium"></ion-icon> -->
       </ion-item>
@@ -44,12 +51,12 @@
 
       <ion-row>
         <ion-col>
-          {{ service.time_start | date : "hh:mm MMMM d, y" }}
+          {{ service.date | date : "hh:mm MMMM d, y" }}
         </ion-col>
         <ion-col align-self-center text-center>
           <ion-icon name="hourglass"></ion-icon>
           <ion-note>
-            {{service.duration_min}} min
+            {{service.duration}} min
           </ion-note>
         </ion-col>
       </ion-row> 
