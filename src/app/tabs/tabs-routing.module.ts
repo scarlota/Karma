@@ -58,6 +58,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'service-detail',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../service-detail/service-detail.module').then(m => m.ServiceDetailModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/app/tabs/list',
         pathMatch: 'full'

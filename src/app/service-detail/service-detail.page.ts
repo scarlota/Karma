@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Service } from '../list/service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-service-detail',
@@ -10,7 +11,11 @@ import { Service } from '../list/service';
 export class ServiceDetailPage implements OnInit {
   @Input() service: Service;
 
-  constructor() { }
+  constructor(private _location: Location) { }
     ngOnInit() {
+  }
+
+  backClicked() {
+    this._location.back();
   }
 }
