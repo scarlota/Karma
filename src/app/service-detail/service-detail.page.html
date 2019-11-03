@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{service.title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div *ngIf="hero">
+
+        <h2>{{service.author | uppercase}} Details</h2>
+        <div><span>id: </span>{{hero.id}}</div>
+        <div>
+          <label>name:
+            <input [(ngModel)]="hero.name" placeholder="name"/>
+          </label>
+        </div>
+      
+      </div>
+    </ion-list>
+</ion-content>

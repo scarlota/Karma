@@ -1,0 +1,47 @@
+.welcome-card img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+.right { float:right; margin-left: 30px; }
+.left { float:left }
+
+.image-align { margin-right: 10px;}
+
+.item-avatar {
+  color: #FFF;
+  background-color: #b31f6f;  
+}
+
+.card-background-page {
+  .ion-card {
+         position: relative;
+         text-align: center;
+     }      
+ 
+     ion-avatar{
+       float: left;
+       text-align: center;
+       vertical-align: middle;
+       width: 72px;
+       height: 72px;
+       line-height: 72px;
+       background-size: 72px 72px;     
+     }
+ 
+     .card-desc-cvr{
+        float: left;
+       }
+ 
+       .card-subtitle{
+         color:#9c9c9c;
+         margin: 0px;
+         font-size: 12px;
+       }
+ 
+       .card-title{
+         color:#838383;
+         font-size:13px;
+         font-weight:400
+       }
+ }
