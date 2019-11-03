@@ -29,11 +29,23 @@ const routes: Routes = [
       },
       {
         path: 'tab3',
+        path: 'gigs',
         children: [
           {
             path: '',
             loadChildren: () =>
               import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import('../gigs/gigs.module').then(m => m.GigsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'profile',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../profile/profile.module').then(m => m.ProfilePageModule)
           }
         ]
       },

@@ -1,0 +1,57 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-title>
+      My Gigs
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>  
+  <!-- My posted gigs -->
+<ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="postedGigs" (click)="toggle()">
+        <ion-label>Posted</ion-label>
+        <ion-badge>6</ion-badge>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="pendingGigs" (click)="toggle()">
+        <ion-label>Pending</ion-label>
+        <ion-badge>1</ion-badge>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+  <ion-list class="hidden" *ngIf ="showPending">
+    <ion-list-header>
+      <ion-label>Posted</ion-label>
+    </ion-list-header>
+    <ion-item>Item 1</ion-item>
+    <ion-item>Item 2</ion-item>
+    <ion-item>Item 3</ion-item>
+    <ion-item>Item 4</ion-item>
+    <ion-item>Item 5</ion-item>
+  </ion-list>
+
+  <ion-list class="hidden" *ngIf ="showPosted">
+      <ion-list-header>
+        <ion-label>Pending</ion-label>
+      </ion-list-header>
+      <ion-item>Item 1</ion-item>
+      <ion-item>Item 2</ion-item>
+      <ion-item>Item 3</ion-item>
+      <ion-item>Item 4</ion-item>
+      <ion-item>Item 5</ion-item>
+    </ion-list>
+
+    <!-- fab placed to the bottom end -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+  </ion-content>
+  
