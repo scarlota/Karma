@@ -12,38 +12,35 @@
   <!-- My posted gigs -->
 <ion-tabs>
     <ion-tab-bar slot="top">
-      <ion-tab-button tab="postedGigs" (click)="toggle()">
+      <ion-tab-button tab="postedGigs" (click) = showPosted()>
         <ion-label>Posted</ion-label>
         <ion-badge>6</ion-badge>
       </ion-tab-button>
-  
-      <ion-tab-button tab="pendingGigs" (click)="toggle()">
+      
+      <ion-tab-button tab="pendingGigs" (click) = showPending()>
         <ion-label>Pending</ion-label>
         <ion-badge>1</ion-badge>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
 
-  <ion-list class="hidden" *ngIf ="showPending">
-    <ion-list-header>
-      <ion-label>Posted</ion-label>
-    </ion-list-header>
-    <ion-item>Item 1</ion-item>
-    <ion-item>Item 2</ion-item>
-    <ion-item>Item 3</ion-item>
-    <ion-item>Item 4</ion-item>
-    <ion-item>Item 5</ion-item>
-  </ion-list>
+    <ion-list *ngIf="showPostedList">
+      <ion-list-header>
+        <ion-label>Posted</ion-label>
+      </ion-list-header>
+      <ion-item>Posted Item 1</ion-item>
+      <ion-item>Posted Item 2</ion-item>
+      <ion-item>Posted Item 3</ion-item>
+      <ion-item>Posted Item 4</ion-item>
+      <ion-item>Posted Item 5</ion-item>
+    </ion-list>
 
-  <ion-list class="hidden" *ngIf ="showPosted">
+
+  <ion-list *ngIf="showPendingList">
       <ion-list-header>
         <ion-label>Pending</ion-label>
       </ion-list-header>
-      <ion-item>Item 1</ion-item>
-      <ion-item>Item 2</ion-item>
-      <ion-item>Item 3</ion-item>
-      <ion-item>Item 4</ion-item>
-      <ion-item>Item 5</ion-item>
+      <ion-item>Pending Item 1</ion-item>
     </ion-list>
 
     <!-- fab placed to the bottom end -->
