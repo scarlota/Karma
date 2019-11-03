@@ -24,12 +24,16 @@ export class ServiceDetailPage implements OnInit {
 
   ngOnInit() {
     this.myId = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.myId);
+    //console.log(this.myId);
     this.service = this.gigService.GetGigById(this.myId);
-    console.log(this.service);
+    //console.log(this.service);
   }
 
   backClicked() {
     this._location.back();
+  }
+
+  onApply() {
+    this.router.navigate(['app/tabs/gigs', this.service.id]);
   }
 }

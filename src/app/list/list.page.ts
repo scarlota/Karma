@@ -38,16 +38,22 @@ import { GigService, KarmaGig } from 'src/app/services/gig.service';
 
 export class ListPage implements OnInit {
 
-  services = SERVICES;
   gigs: Array<KarmaGig>;
 
   selectedService: Service;
 
   constructor(private router: Router, private gigService: GigService) {
-    this.gigs = gigService.GetGigs();
   }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    let now = new Date();
+    this.gigs = this.gigService.GetGigs();
+    this.gigs = this.gigs.sort((a,b) => {
+      return new Date(b.date) - new Date(a.date);
+    });
   }
 
   onSelect(service: Service): void {
