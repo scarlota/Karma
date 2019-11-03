@@ -20,7 +20,7 @@ export class MapsPage {
 
 
 
-    ngAfterViewInit() {
+    ionViewDidEnter() {
         this.loadMap();
     }
 
@@ -54,7 +54,7 @@ export class MapsPage {
 
             let obj = gigs[index];
             let infowindow = new google.maps.InfoWindow({
-                content: obj.title +' / '+ obj.date
+                content: "<h5>"+ obj.title +"</h5><p> " + obj.date
               });
 
               infoWindows.push(infowindow);

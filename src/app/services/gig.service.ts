@@ -77,7 +77,7 @@ export class GigService {
             120),
         new KarmaGig(17,
             '',
-            "Boarding help",
+            "Need somebody to walk me home",
             "2019-01-05T09:05:05Z",
             "people",
             "I need to board the train at 12:15 but can't get up the stairs",
@@ -112,6 +112,10 @@ export class GigService {
         return this.gigs;
     }
 
+    AddGig(gig : KarmaGig) {
+        this.gigs.push(gig);
+    }
+    
     GetGigById(id: number): KarmaGig {
         return this.gigs.find(x => x.id == id);;
     }
@@ -135,8 +139,7 @@ export class KarmaGig {
     }
 }
 
-class GigLocation {
-
+export class GigLocation {
     constructor(public lat: any, public len: any, public address: string = "") {
 
     }
