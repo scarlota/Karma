@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { SERVICES } from './mock-services';
 import { Service } from './service';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 
 import { Routes } from '@angular/router';
 import { ServiceDetailPage } from '../service-detail/service-detail.page';
+import { GigService, KarmaGig } from 'src/app/services/gig.service';
 
 // const routes: Routes = [
 //   {
@@ -38,10 +39,13 @@ import { ServiceDetailPage } from '../service-detail/service-detail.page';
 export class ListPage implements OnInit {
 
   services = SERVICES;
-  selectedService : Service;
+  gigs: Array<KarmaGig>;
 
-  constructor(private router: Router) { 
-  } 
+  selectedService: Service;
+
+  constructor(private router: Router, private gigService: GigService) {
+    this.gigs = gigService.GetGigs();
+  }
 
   ngOnInit() {
   }
