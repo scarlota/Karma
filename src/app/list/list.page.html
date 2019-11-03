@@ -13,30 +13,26 @@
       <ion-item class="item item-text-wrap">
         <ion-avatar item-start style="margin-right: 10px;" class="item-avatar">
           <img *ngIf="service.image != ''" src="{{service.image}}">
-          <div *ngIf="service.image == ''" ng-switch="service.category">
-              <div ng-switch-when="pet">
-                <ion-icon name="paw" color="blue" style="align-self: center;size: 24px;"></ion-icon>
+          <div *ngIf="service.image == ''" [ngSwitch]="service.category">
+              <div *ngSwitchCase="'pet'">
+                <ion-icon name="paw" color="dark" class="icon-margin"></ion-icon>
               </div>
-              <!-- <div ng-switch-when="shop">
-                <ion-icon name="cart" color="dark"></ion-icon>
+              <div *ngSwitchCase="'shop'">
+                <ion-icon name="cart" color="dark" class="icon-margin"></ion-icon>
               </div>
-              <div ng-switch-when="ride">
-                <ion-icon name="car" color="red"></ion-icon>
+              <div *ngSwitchCase="'ride'">
+                <ion-icon name="car" color="dark" class="icon-margin"></ion-icon>
               </div>
-              <div ng-switch-when="work">
-                <ion-icon name="hammer" color="dark"></ion-icon>
+              <div *ngSwitchCase="'work'">
+                <ion-icon name="hammer" color="dark" class="icon-margin"></ion-icon>
               </div>
-              <div ng-switch-default>
-                  <ion-icon name="body" color="dark"></ion-icon>
-                </div>-->
+              <div *ngSwitchCase="'food'">
+                  <ion-icon name="pizza" color="dark" class="icon-margin"></ion-icon>
+                </div>
+              <div *ngSwitchDefault>
+                  <ion-icon name="body" color="dark" class="icon-margin"></ion-icon>
+                </div>
             </div> 
-
-           <span [ngSwitch]="service.category">
-                <p *ngSwitchCase="'pet'">Gluten-free</p>
-                <p *ngSwitchCase="'shop'">Vegetarian / Vegan</p>
-                <p *ngSwitchCase="'ride'">Paleo</p>
-                <p *ngSwitchDefault>Standard diet</p>
-              </span>
         </ion-avatar>
         <ion-label text-wrap>
             <ion-card-title>{{service.title}}</ion-card-title>
