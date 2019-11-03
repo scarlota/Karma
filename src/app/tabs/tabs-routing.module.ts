@@ -28,6 +28,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'gigs/:gid',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../gigs/gigs.module').then(m => m.GigsPageModule)
+          }
+        ]
+      },
+      {
         path: 'gigs',
         children: [
           {

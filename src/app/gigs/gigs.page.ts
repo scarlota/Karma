@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GigService, KarmaGig } from 'src/app/services/gig.service';
 import { ArrayType } from '@angular/compiler/src/output/output_ast';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-gigs',
   templateUrl: 'gigs.page.html',
   styleUrls: ['gigs.page.scss']
 })
-export class GigsPage {
+
+export class GigsPage implements OnInit {
   showPostedList: boolean = true;
   showPendingList: boolean = false;
 
@@ -19,8 +21,18 @@ export class GigsPage {
 
   pendingGigsIds : Array<number> = [17,18]
 
-  constructor(private gigService : GigService) {
+  constructor(private gigService : GigService, private activatedRoute: ActivatedRoute) {
     
+  }
+
+  ngOnInit() {
+    let addPendingGig = this.activatedRoute.snapshot.paramMap.get('gid');
+    let hasAddedGig = addPendingGig != undefined;
+
+    if (hasAddedGig) {
+      this.pendingGigsIds.push(Number(addPendingGig));
+      this.showPending();
+    }
   }
 
   ionViewDidEnter()
@@ -34,10 +46,10 @@ export class GigsPage {
 
   showPosted() {
     this.showPostedList = true;
-    this.showPendingList = !this.showPostedList;
+    this.showPendingList = false;
   }
   showPending() {
     this.showPendingList = true;
-    this.showPostedList = !this.showPendingList;
+    this.showPostedList = false;
   }
 }
