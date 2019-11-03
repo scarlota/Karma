@@ -13,30 +13,23 @@
       <ion-item class="item item-text-wrap">
         <ion-avatar item-start style="margin-right: 10px;" class="item-avatar">
           <img *ngIf="service.image != ''" src="{{service.image}}">
-          <div *ngIf="service.image == ''" ng-switch="service.category">
-              <div ng-switch-when="pet">
-                <ion-icon name="paw" color="blue" style="align-self: center;size: 24px;"></ion-icon>
+          <div *ngIf="service.image == ''" [ngSwitch]="service.category">
+              <div *ngSwitchCase="'pet'">
+                <ion-icon name="paw" color="blue" class="icon-margin"></ion-icon>
               </div>
-              <!-- <div ng-switch-when="shop">
-                <ion-icon name="cart" color="dark"></ion-icon>
+              <div *ngSwitchCase="'shop'">
+                <ion-icon name="cart" color="dark" class="icon-margin"></ion-icon>
               </div>
-              <div ng-switch-when="ride">
-                <ion-icon name="car" color="red"></ion-icon>
+              <div *ngSwitchCase="'ride'">
+                <ion-icon name="car" color="red" class="icon-margin"></ion-icon>
               </div>
-              <div ng-switch-when="work">
-                <ion-icon name="hammer" color="dark"></ion-icon>
+              <div *ngSwitchCase="'work'">
+                <ion-icon name="hammer" color="dark" class="icon-margin"></ion-icon>
               </div>
-              <div ng-switch-default>
-                  <ion-icon name="body" color="dark"></ion-icon>
-                </div>-->
+              <div *ngSwitchDefault>
+                  <ion-icon name="body" color="dark" class="icon-margin"></ion-icon>
+                </div>
             </div> 
-
-            <!-- <span [ngSwitch]="dietSelection">
-                <p *ngSwitchCase="'gf'">Gluten-free</p>
-                <p *ngSwitchCase="'veg'">Vegetarian / Vegan</p>
-                <p *ngSwitchCase="'paleo'">Paleo</p>
-                <p *ngSwitchDefault>Standard diet</p>
-              </span> -->
         </ion-avatar>
         <ion-label text-wrap>
             <ion-card-title>{{service.title}}</ion-card-title>
